@@ -1,19 +1,22 @@
-# URL shortener with Go and Redis
+Конечно, вот ваш ридми файл:
 
-This repo is an implementation of a URL shortener service using Golang, Fiber, and Redis. Each user can send a maximum of 10 requests per 30 minutes to shorten their URLs. Every shortened URL will have an expiration of 24 hours by default. For customization, users can suggest  and set their own shortened URL as well as the expiration time (up to 720 hours).
+```markdown
+# Сокращение URL с использованием Go и Redis
 
-To continue using the shortened URL, the user also can extend the old expiration using the same URL and the old shortened URL with the new expiration time.
+Этот репозиторий - реализация службы сокращения URL с использованием Golang, Fiber и Redis. Каждый пользователь может отправить максимум 10 запросов за 30 минут, чтобы сократить свои URL. Каждый сокращенный URL будет иметь срок действия по умолчанию 24 часа. Для настройки пользователи могут предложить и установить свой собственный сокращенный URL, а также срок его действия (до 720 часов).
 
-## Features
+Чтобы продолжить использовать сокращенный URL, пользователь также может продлить его старый срок действия, используя тот же URL и старый сокращенный URL с новым временем истечения срока действия.
 
-- [x] Shorten URL
-- [x] Customize short URL
-- [x] Customize expiration
-- [x] Extend expiration
+## Особенности
 
-## Setup
+- [x] Сократить URL
+- [x] Настроить короткий URL
+- [x] Настроить срок действия
+- [x] Продлить срок действия
 
-Create a `.env` file inside `api` folder similar to this:
+## Установка
+
+Создайте файл `.env` внутри папки `api` с содержимым, аналогичным следующему:
 
 ```text
 DB_ADDR="db:6379"
@@ -24,21 +27,21 @@ API_QUOTA=10
 MAX_TRY=5
 ```
 
-You can modify the `DB_ADDR` and `DB_PASS` to use your own Redis server
+Вы можете изменить `DB_ADDR` и `DB_PASS`, чтобы использовать свой собственный сервер Redis.
 
-For deployment, modify the `DOMAIN` to your deployment URL.
+Для развертывания измените `DOMAIN` на свой URL развертывания.
 
-## Start service with Docker Compose
+## Запуск службы с помощью Docker Compose
 
-### To start the application
+### Чтобы запустить приложение
 
-Step 1: start Redis and Go app
+Шаг 1: запустите Redis и приложение Go
 
 ```bash
 docker-compose -f docker-compose.yaml up
 ```
 
-#### Request and response struct
+#### Структура запроса и ответа
 
 ```Go
 type request struct {
@@ -56,13 +59,13 @@ type response struct {
 }
 ```
 
-#### Shorten URL
+#### Сокращение URL
 
 ```text
     POST http://localhost:3000/api/v1
 ```
 
-Example:
+Пример:
 
 ```json
 {
@@ -70,14 +73,16 @@ Example:
 }
 ```
 
-#### Resolve URL
+#### Разрешение URL
 
 ```text
     GET http://localhost:3000/{id}
 ```
 
-### To build a docker image from the application
+### Чтобы создать образ Docker из приложения
 
 ```bash
 docker build -t mygo:1.0 ./api       
 ```
+```
+
