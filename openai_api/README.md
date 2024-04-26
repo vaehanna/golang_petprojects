@@ -1,7 +1,4 @@
-# Playaround with OpenAI
-
-## Usage
-
+#Использование
 ```bash
 cd chat
 go run main.go
